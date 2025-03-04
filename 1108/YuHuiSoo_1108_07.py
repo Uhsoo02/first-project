@@ -1,0 +1,36 @@
+# 과제7: 퀵 정렬(이코테) - Step과 Pivot 표시
+# 이름: 컴퓨터공학부 유희수
+# 날짜: 2024-11-08
+
+array = [5, 7, 9, 0, 3, 1, 6, 2, 4, 8]
+step = 1
+
+def quick_sort(array, start, end):
+    global step
+    if start >= end:
+        return
+    
+    pivot = start
+    left = start + 1
+    right = end
+
+    display_array = array[:]
+    display_array[pivot] = f"*{array[pivot]}"
+    print(f"Step {step}:", display_array)
+    step += 1
+
+    while left <= right:
+        while left <= end and array[left] <= array[pivot]:
+            left += 1
+        while right > start and array[right] >= array[pivot]:
+            right -= 1
+        if left > right:
+            array[right], array[pivot] = array[pivot], array[right]
+        else:
+            array[left], array[right] = array[right], array[left]
+
+    quick_sort(array, start, right - 1)
+    quick_sort(array, right + 1, end)
+
+quick_sort(array, 0, len(array)-1)
+print("Final sorted array:", array)
