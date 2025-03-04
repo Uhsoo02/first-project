@@ -83,6 +83,3 @@ if __name__ == "__main__":
                 break
             continue  # 대기 상태 해제 후 다시 명령을 받을 준비
         play_song(user_command)
-
-
-print("추가했다 이 부분")
